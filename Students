@@ -1,0 +1,93 @@
+#include <iostream>
+
+enum Menu
+{
+	ShowAllStudents = 1,
+	ShowOneStudent,
+	AddNewStudent,
+	Exit
+};
+
+class AgeAndNamesOfStudents
+{
+public:
+	void ShowStudentsNameAndAge(int i);
+	void EntreInfoAboutStudent();
+private:
+	char m_name[20];
+	int m_studentAge;
+	int m_studentRating;
+};
+
+void AgeAndNamesOfStudents::ShowStudentsNameAndAge(int i)
+{
+	std::cout << "#" << i << ": " << m_name << "\n" << "Age: "  << m_studentAge << "\nRating: " << m_studentRating << "\n";
+}
+
+void AgeAndNamesOfStudents::EntreInfoAboutStudent()
+{
+	
+	std::cout << "Entre student\'s name: ";
+	std::cin >> m_name;
+	std::cout << "Entre student\'s age: ";
+	std::cin >> m_studentAge;
+	std::cout << "Entre student\'s rating: ";
+	std::cin >> m_studentRating;
+}
+
+
+
+int main()
+{
+
+	std::cout << "Entre student\'s quantity: ";
+	int studentsQuantity;
+	std::cin >> studentsQuantity;
+	
+	AgeAndNamesOfStudents* first = new AgeAndNamesOfStudents[studentsQuantity];
+	for (int i = 0; i < studentsQuantity; i++)
+	{
+		first[i].EntreInfoAboutStudent();
+	}
+	
+	while (0 < 1)
+	{
+		std::cout << "\tMenu\n1. Show All Students\n2. Show One Student\n3. Add new student\n4. Exit\n" << "Entre interesting position: ";
+		int menu;
+		std::cin >> menu;
+		switch (menu)
+		{
+		case ShowAllStudents:
+			std::cout << "\t========\n";
+			for (int i = 0; i < studentsQuantity; i++)
+			{
+				first[i].ShowStudentsNameAndAge(i + 1);
+			}
+			break;
+		case ShowOneStudent:
+			std::cout << "Entre student number: ";
+			int studentNumber;
+			std::cin >> studentNumber;
+			first[studentNumber-1].ShowStudentsNameAndAge(studentNumber);
+			break;
+		case AddNewStudent:
+			int newStudentNumber;
+			std::cin >> newStudentNumber;
+
+			for (int i = studentsQuantity; i < studentsQuantity + newStudentNumber; i++)
+			{
+				first[i].EntreInfoAboutStudent();
+			}
+			studentsQuantity = studentsQuantity + newStudentNumber;
+			break;
+		case Exit:
+			std::cout << "Good Bye!\n";
+			delete[] first;
+			return 0;
+		default:
+			break;
+		}
+	}
+	delete[] first;
+	return 0;
+}
