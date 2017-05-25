@@ -1,0 +1,53 @@
+#include <iostream>
+
+class Vector
+{
+public:
+	void zeroVector();
+	void initVectorsCoordinates(int coordinateX, int coordinateY, int coordinateZ);
+	void printVectorsCoordinates();
+
+
+private:
+	int m_coordinateX;
+	int m_coordinateY;
+	int m_coordinateZ;
+};
+
+void Vector::zeroVector()
+{
+	m_coordinateX = 0;
+	m_coordinateY = 0;
+	m_coordinateZ = 0;
+}
+
+void Vector::initVectorsCoordinates(int coordinateX, int coordinateY, int coordinateZ)
+{
+	m_coordinateX = coordinateX;
+	m_coordinateY = coordinateY;
+	m_coordinateZ = coordinateZ;
+}
+
+void Vector::printVectorsCoordinates()
+{
+	std::cout << "Coordinate X: " << m_coordinateX << "\nCoordinate Y: " << m_coordinateY << "\nCoordinate Z: " << m_coordinateZ << "\n";
+}
+
+int main()
+{
+	Vector vector;
+	vector.zeroVector();
+
+	int coordinateX;
+	int coordinateY;
+	int coordinateZ;
+	std::cout << "Entre coordinate X: ";
+	std::cin >> coordinateX;
+	std::cout << "Entre coordinate Y: ";
+	std::cin >> coordinateY;
+	std::cout << "Entre coordinate Z: ";
+	std::cin >> coordinateZ;
+	
+	vector.initVectorsCoordinates(coordinateX, coordinateY, coordinateZ);
+	vector.printVectorsCoordinates();
+}
