@@ -1,0 +1,108 @@
+#include <iostream>
+#include <cstring>
+
+class Set
+{
+public:
+	Set();
+	~Set();
+
+	void PrintArray();
+	void AddElementsToArray(int usersNumber);
+	bool Contains(int usersNumber);
+	void DeleteElement(int usersNumber);
+
+private:
+	void ExpandCapacity();
+
+	int* m_elements;
+	int m_capacity;
+	int m_count;
+};
+
+void Set::ExpandCapacity()
+{
+	m_capacity *= 2;
+	int* newMemory = new int[m_capacity];
+	memcpy(newMemory, m_elements, m_count);
+	m_elements = newMemory;
+}
+
+Set::Set()
+{
+	m_capacity = 5;
+	m_elements = new int[m_capacity];
+	m_count = 0;
+}
+
+Set::~Set()
+{
+}
+
+void Set::AddElementsToArray(int usersNumber)
+{
+	Contains(usersNumber);
+	if (m_count <= m_capacity)
+	{
+		std::cout << "Don't enough memory. Memory expand.\n";
+		ExpandCapacity();
+	}
+	m_elements[m_count] = usersNumber;
+	m_count++;
+}
+
+bool Set::Contains(int usersNumber)
+{
+	for (int i = 0; i < m_count; i++)
+	{
+		if (usersNumber == m_elements[i])
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+void Set::DeleteElement(int usersNumber)
+{
+	
+	for (int i = 0; i < m_count; i++)
+	{
+		if (usersNumber == m_elements[i])
+		{
+			for (int j = i; j <= m_count - 1; j++)
+			{
+				m_elements[i] = m_elements[i + 1];
+			}
+			m_count--;
+			break;
+		}
+	}
+}
+
+void Set::PrintArray()
+{
+	for (int i = 0; i < m_count; i++)
+	{
+		std::cout << i + 1 << "#: " << m_elements[i];
+	}
+}
+
+
+int main()
+{
+	Set s1;
+	int usersNumbers;
+	std::cin >> usersNumbers;
+	s1.AddElementsToArray(usersNumbers);
+	std::cin >> usersNumbers;
+	s1.Contains(usersNumbers);
+	if (s1.Contains(usersNumbers) == 1)
+	{
+		std::cout << "This element contains in this array.\n";
+	}
+	else
+	{
+		std::cout << "This element not found.\n";
+	}
+}
