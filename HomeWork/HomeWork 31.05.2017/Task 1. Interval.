@@ -1,0 +1,36 @@
+//Задача 1. Интервал.
+
+#include <iostream>
+
+class Interval
+{
+public:
+	Interval();
+	Interval(float start, float end);
+	~Interval();
+
+private:
+	float m_start;
+	float m_end;
+};
+
+Interval::Interval()
+{
+	m_start = 0;
+	m_end = 0;
+}
+
+Interval::Interval(float start, float end)
+{
+	m_start = start;
+	m_end = end;
+}
+
+Interval::~Interval()
+{
+}
+
+int main()
+{
+
+}
