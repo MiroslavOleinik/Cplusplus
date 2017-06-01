@@ -46,6 +46,7 @@ int Stack::Pop()
 	if (m_count == 0)
 	{
 		std::cout << "Stack is empty.\n";
+		return NULL;
 	}
 	int buff = m_elements[m_count-1];
 	m_count--;
@@ -59,7 +60,6 @@ int Stack::Top()
 
 void Stack::Clear()
 {
-
 	m_elements = new int[m_capacity];
 	m_count = 0;
 	delete[] m_elements;
