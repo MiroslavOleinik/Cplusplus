@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 class Stack
 {
@@ -11,6 +11,7 @@ public:
 	int Pop();
 	int Top();
 	void Clear();
+	int testingCount();
 
 	Stack& operator>> (int& element);
 	Stack& operator << (int element);
@@ -22,3 +23,4 @@ private:
 	int m_capacity;
 	int m_count;
 };
+

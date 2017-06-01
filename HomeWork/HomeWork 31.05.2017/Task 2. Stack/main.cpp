@@ -1,5 +1,6 @@
+﻿//Task 2. Stack.
+
 #include <iostream>
-#include <locale.h>
 #include "Stack.h"
 
 enum Menu
@@ -7,12 +8,12 @@ enum Menu
 	Push = 1,
 	Pop,
 	Top,
-	Clear
+	Clear,
+	Exit
 };
 
 int main()
 {
-	setlocale(LC_ALL, "Rus");
 	Stack s1;
 	int menu;
 	int element;
@@ -31,13 +32,29 @@ int main()
 			s1 >> element;
 			if (element == NULL)
 			{
+				std::cout << "Stack is empty.\n";
 				continue;
 			}
-			std::cout << element << "Element was took from stack.\n";
+			std::cout << "Number " << element << " was took from stack.\n";
 			break;
 		case Top:
+			if (s1.Top() == NULL)
+			{
+				std::cout << "Stack is empty.\n";
+				continue;
+			}
+			else
+			{
+				std::cout << "Last number in stack is "<< s1.Top() << ".\n";
+			}
 			break;
 		case Clear:
+			s1.Clear();
+			std::cout << "Stack is clear now.\n";
+			break;
+		case Exit:
+			std::cout << "Good Bye.\n";
+			return 1;
 			break;
 		default:
 			break;

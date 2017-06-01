@@ -1,4 +1,4 @@
-#include "Stack.h"
+﻿#include "Stack.h"
 #include <iostream>
 
 Stack::Stack(const Stack& obj)
@@ -43,11 +43,7 @@ void Stack::Push(int element)
 
 int Stack::Pop()
 {
-	if (m_count == 0)
-	{
-		std::cout << "Stack is empty.\n";
-		return NULL;
-	}
+	testingCount();
 	int buff = m_elements[m_count-1];
 	m_count--;
 	return buff;
@@ -55,6 +51,7 @@ int Stack::Pop()
 
 int Stack::Top()
 {
+	testingCount();
 	return m_elements[m_count-1];
 }
 
@@ -75,4 +72,12 @@ Stack& Stack::operator << (int element)
 {
 	Push(element);
 	return *this;
+}
+
+int Stack::testingCount()
+{
+	if (m_count == 0)
+	{
+		return NULL;
+	}
 }
