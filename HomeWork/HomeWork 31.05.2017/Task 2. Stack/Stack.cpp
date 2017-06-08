@@ -43,7 +43,10 @@ void Stack::Push(int element)
 
 int Stack::Pop()
 {
-	testingCount();
+	if (m_count == 0)
+	{
+		return NULL;
+	}
 	int buff = m_elements[m_count-1];
 	m_count--;
 	return buff;
@@ -51,7 +54,10 @@ int Stack::Pop()
 
 int Stack::Top()
 {
-	testingCount();
+	if (m_count == 0)
+	{
+		return NULL;
+	}
 	return m_elements[m_count-1];
 }
 
@@ -72,12 +78,4 @@ Stack& Stack::operator << (int element)
 {
 	Push(element);
 	return *this;
-}
-
-int Stack::testingCount()
-{
-	if (m_count == 0)
-	{
-		return NULL;
-	}
 }
