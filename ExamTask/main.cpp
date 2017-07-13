@@ -3,33 +3,31 @@
 #include "PhoneBook.h"
 
 
-
-IPhoneBook* AddNewNumber(std::string name, std::string phoneNumber)
-{
-	return new NewPhoneMemberNumber(name, phoneNumber);
-}
-
-void PrintMembersInfo(IPhoneBook* newMember)
-{
-	std::cout << newMember->GetName() << ": \n" << newMember->GetNumber();
-}
-
 int main()
 {	
 	std::string name;
-	std::string phoneNumber;
+	int phoneNumber;
 	std::cout << "Entre name: ";
 	std::cin >> name;
-	std::cout << "Entre phone: ";
+	std::cout << "Please, entre phone number in internationale form (17xxxxxxx, 25xxxxxxx, 29xxxxxxx, 33xxxxxxx, 44xxxxxxx): ";
 	std::cin >> phoneNumber;
-	IPhoneBook* newMember = new GetPhoneMemberName(name, phoneNumber);
-	newMember = AddNewNumber(name, phoneNumber);
-	std::cout << "Entre name: ";
-	std::cin >> name;
-	std::cout << "Entre phone: ";
-	std::cin >> phoneNumber;
-	newMember = AddNewNumber(name, phoneNumber);
-	PrintMembersInfo(newMember);
+	PhoneBook newMember(name, phoneNumber);
 
+	std::cout << "Please, entre phone number in internationale form (17xxxxxxx, 25xxxxxxx, 29xxxxxxx, 33xxxxxxx, 44xxxxxxx): ";
+	std::cin >> phoneNumber;
+	newMember.AddNewNumber(phoneNumber);
+
+	std::cout << "Please, entre phone number in internationale form (17xxxxxxx, 25xxxxxxx, 29xxxxxxx, 33xxxxxxx, 44xxxxxxx): ";
+	std::cin >> phoneNumber;
+	newMember.AddNewNumber(phoneNumber);
+
+	newMember.PrintMembersPhoneNumbers();
+
+	int count = 0;
+	std::cout << "Please, choose what number you wan/'t remove: ";
+	std::cin >> count;
+
+	newMember.RemoveNumber(count - 1);
+	newMember.PrintMembersPhoneNumbers();
 }
 
